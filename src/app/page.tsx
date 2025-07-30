@@ -1,5 +1,6 @@
 import Container from "@/components/Container";
 import Header from "@/components/Header";
+import PostHeading from "@/components/PostHeading";
 import PostList from "@/components/PostList";
 import SpinLoader from "@/components/SpinLoader";
 import { postRepository } from "@/repositories/post";
@@ -31,9 +32,9 @@ export default async function HomePage() {
           <div className="flex flex-col gap-8 sm:justify-center">
             <time dateTime="2025-07-29" className="text-slate-600 dark:text-gray-400 text-sm/tight">29/07/2025 15:15</time>
 
-            <h1 className="text-2xl/tight font-extrabold sm:text-4xl">
-              <Link href={'#'}>Lorem ipsum dolor sit amet consectetur</Link>
-            </h1>
+            <PostHeading url="/" as="h3">
+              Lorem ipsum dolor sit amet consectetur
+            </PostHeading>
 
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam totam voluptate quisquam accusantium esse accusamus officia, tempora minus mollitia quod ex ullam ratione. Quod dolores explicabo animi consequuntur non eligendi!</div>
         </section>
