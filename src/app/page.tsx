@@ -1,12 +1,10 @@
 import Container from "@/components/Container";
 import Header from "@/components/Header";
+import PostCoverImage from "@/components/PostCoverImage";
 import PostHeading from "@/components/PostHeading";
 import PostList from "@/components/PostList";
 import SpinLoader from "@/components/SpinLoader";
 import { postRepository } from "@/repositories/post";
-import clsx from "clsx";
-import Image from "next/image";
-import Link from "next/link";
 import { Suspense } from "react";
 
 export default async function HomePage() {
@@ -18,17 +16,22 @@ export default async function HomePage() {
         <Header />
 
         <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">
-          <Link href="" className="w-full h-full overflow-hidden rounded-md">
-            <Image
-              src="/images/pessoa-altamente-eficaz.png"
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-screen h-[350px] md:h-[400px] md:w-[600px] group-hover:scale-105 transition duration-200"
-              alt="Titulo"
-              priority
-            />
-          </Link>
+
+          <PostCoverImage linkProps={{
+            href: '/post/sahshaj'
+          }}
+
+            imageProps={{
+              width: 0,
+              height: 0,
+              alt: 'titulo',
+              src: '/images/pessoa-altamente-eficaz.png',
+              sizes: '100vw',
+              priority: true
+            }}
+            height="96"
+          />
+
           <div className="flex flex-col gap-8 sm:justify-center">
             <time dateTime="2025-07-29" className="text-slate-600 dark:text-gray-400 text-sm/tight">29/07/2025 15:15</time>
 
