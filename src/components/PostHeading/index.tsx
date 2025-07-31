@@ -1,9 +1,10 @@
+import type { PostHead } from "@/types/post-heading";
 import Link from "next/link";
 
 type PostHeadingProps = {
   children: React.ReactNode,
   url: string,
-  as?: 'h1' | 'h2' | 'h3'
+  as?: PostHead
 }
 
 export default function PostHeading({

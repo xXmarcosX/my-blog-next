@@ -1,5 +1,6 @@
 import PostCoverImage from "../PostCoverImage";
 import PostHeading from "../PostHeading";
+import PostSummary from "../PostSummary";
 
 export default function FeaturedPost() {
   const slug = 'postSlug'
@@ -24,14 +25,16 @@ export default function FeaturedPost() {
           }}
         />
 
-        <div className="flex flex-col gap-8 sm:justify-center">
-          <time dateTime="2025-07-29" className="text-slate-600 dark:text-gray-400 text-sm/tight">29/07/2025 15:15</time>
-
-          <PostHeading url={postLink} as="h1">
-            Lorem ipsum dolor sit amet consectetur
-          </PostHeading>
-
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam totam voluptate quisquam accusantium esse accusamus officia, tempora minus mollitia quod ex ullam ratione. Quod dolores explicabo animi consequuntur non eligendi!</div>
+        <PostSummary
+          createdAt="2025-07-31T17:23:02.314Z"
+          excerpt="Se você sente que os seus dias passam voando e que nunca há tempo suficiente para tudo, 
+          talvez o segredo esteja na forma como você começa as suas manhãs. 
+          A rotina matinal de uma pessoa altamente eficaz não é apenas sobre acordar cedo — é 
+          sobre assumir o controle do dia antes que o dia assuma o controle de você."
+          postHeading="h1"
+          postLink="/post/otina-matinal-de-pessoas-altamente-eficazes"
+          title="Rotina matinal de pessoas altamente eficazes"
+        />
       </section>
     </>
   )

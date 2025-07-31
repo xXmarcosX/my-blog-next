@@ -1,6 +1,6 @@
 import { postRepository } from "@/repositories/post"
 import PostCoverImage from "../PostCoverImage"
-import PostHeading from "../PostHeading"
+import PostSummary from "../PostSummary"
 
 export default async function PostList() {
   const posts = await postRepository.findAll()
@@ -28,21 +28,13 @@ export default async function PostList() {
             }}
           />
 
-          <div className="flex flex-col gap-2 mt-4">
-            <time dateTime="2025-07-29" className="text-slate-600 dark:text-gray-400 text-sm/tight font-normal">29/07/2025 15:15</time>
-
-            <div>
-              <PostHeading url={postLink} as="h2">
-                {post.title}
-              </PostHeading>
-            </div>
-
-            <div>
-              <p className="font-normal sm:text-sm">
-                {post.excerpt}
-              </p>
-            </div>
-          </div>
+          <PostSummary
+            postHeading="h2"
+            postLink={postLink}
+            createdAt={post.createdAt}
+            excerpt={post.excerpt}
+            title={post.title}
+          />
         </div>
       })}
     </div>

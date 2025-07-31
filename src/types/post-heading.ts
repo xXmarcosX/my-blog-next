@@ -1,0 +1,1 @@
+export type PostHead = 'h1' | 'h2' | 'h3'
