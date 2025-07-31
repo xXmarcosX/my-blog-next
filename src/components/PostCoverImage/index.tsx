@@ -21,7 +21,7 @@ export default function PostCoverImage({ imageProps, linkProps, height }: PostCo
         <Image
           {...imageProps}
           className={clsx(
-            'w-screen',
+            'w-full',
             `h-${height}`,
             'group-hover:scale-105',
             'transition duration-200',

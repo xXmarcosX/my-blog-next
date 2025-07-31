@@ -15,7 +15,7 @@ export default async function HomePage() {
       <Container>
         <Header />
 
-        <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">
+        <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group w-full">
 
           <PostCoverImage linkProps={{
             href: '/post/sahshaj'
@@ -23,11 +23,11 @@ export default async function HomePage() {
 
             imageProps={{
               width: 0,
-              height: 0,
+              height: 96,
               alt: 'titulo',
               src: '/images/pessoa-altamente-eficaz.png',
               sizes: '100vw',
-              priority: true
+              priority: true,
             }}
             height="96"
           />
@@ -35,7 +35,7 @@ export default async function HomePage() {
           <div className="flex flex-col gap-8 sm:justify-center">
             <time dateTime="2025-07-29" className="text-slate-600 dark:text-gray-400 text-sm/tight">29/07/2025 15:15</time>
 
-            <PostHeading url="/" as="h3">
+            <PostHeading url="/" as="h1">
               Lorem ipsum dolor sit amet consectetur
             </PostHeading>
 
