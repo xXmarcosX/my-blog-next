@@ -15,7 +15,7 @@ export default async function HomePage() {
       <Container>
         <Header />
 
-        <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group w-full">
+        <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group w-full sm:h-96">
 
           <PostCoverImage linkProps={{
             href: '/post/sahshaj'
@@ -28,8 +28,8 @@ export default async function HomePage() {
               src: '/images/pessoa-altamente-eficaz.png',
               sizes: '100vw',
               priority: true,
+              className: 'h-full'
             }}
-            height="96"
           />
 
           <div className="flex flex-col gap-8 sm:justify-center">

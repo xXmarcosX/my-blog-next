@@ -6,13 +6,12 @@ export default async function PostList() {
   const posts = await postRepository.findAll()
 
   return (
-    <div className="grid grid-cols-1 gap-12 sm:grid-cols-3 font-bold w-full">
+    <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 font-bold w-full">
       {posts.map(post => {
         return <div key={post.id} className="group overflow-hidden">
           <PostCoverImage
             linkProps={{
               href: `/post/${post.slug}`,
-              // className: 'h-12'
             }}
 
             imageProps={{
@@ -22,9 +21,9 @@ export default async function PostList() {
               height: 150,
               sizes: '100vw',
               priority: true,
+              title: `${post.title}`,
               className: 'rounded-md'
             }}
-            height="34"
           />
 
           <div className="flex flex-col gap-2 mt-4">
@@ -37,7 +36,7 @@ export default async function PostList() {
             </div>
 
             <div>
-              <p className="font-normal">
+              <p className="font-normal sm:text-sm">
                 {post.excerpt}
               </p>
             </div>

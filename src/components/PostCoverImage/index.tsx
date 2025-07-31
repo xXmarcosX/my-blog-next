@@ -5,10 +5,9 @@ import clsx from "clsx";
 type PostCoverImageProps = {
   imageProps: React.ComponentProps<typeof Image>,
   linkProps: React.ComponentProps<typeof Link>,
-  height: string,
 }
 
-export default function PostCoverImage({ imageProps, linkProps, height }: PostCoverImageProps) {
+export default function PostCoverImage({ imageProps, linkProps }: PostCoverImageProps) {
   return (
     <>
       <Link {...linkProps} className={clsx(
@@ -22,7 +21,6 @@ export default function PostCoverImage({ imageProps, linkProps, height }: PostCo
           {...imageProps}
           className={clsx(
             'w-full',
-            `h-${height}`,
             'group-hover:scale-105',
             'transition duration-200',
             imageProps.className

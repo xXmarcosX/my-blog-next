@@ -13,9 +13,9 @@ export default function PostHeading({
 }: PostHeadingProps) {
 
   const postClassesMap = {
-    h1: 'text-2xl/tight font-extrabold sm:text-4xl',
-    h2: 'text-2xl/tight sm:text-2xl',
-    h3: 'text-md/tight font-extrabold sm:text-4xl'
+    h1: 'text-2xl/tight font-extrabold sm:text-4xl hover:text-slate-600 dark:hover:text-slate-300 transition duration-200',
+    h2: 'text-2xl/tight font-extrabold sm:text-lg lg:text-2xl hover:text-slate-600 dark:hover:text-slate-300 transition duration-200',
+    h3: 'text-md/tight font-extrabold sm:text-4xl hover:text-slate-600 dark:hover:text-slate-300 transition duration-200'
   }
 
   return (
