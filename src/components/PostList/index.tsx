@@ -8,10 +8,12 @@ export default async function PostList() {
   return (
     <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 font-bold w-full">
       {posts.map(post => {
+        const postLink = `/post/${post.slug}`
+
         return <div key={post.id} className="group overflow-hidden">
           <PostCoverImage
             linkProps={{
-              href: `/post/${post.slug}`,
+              href: postLink,
             }}
 
             imageProps={{
@@ -30,7 +32,7 @@ export default async function PostList() {
             <time dateTime="2025-07-29" className="text-slate-600 dark:text-gray-400 text-sm/tight font-normal">29/07/2025 15:15</time>
 
             <div>
-              <PostHeading url={`/post/${post.id}`} as="h2">
+              <PostHeading url={postLink} as="h2">
                 {post.title}
               </PostHeading>
             </div>
