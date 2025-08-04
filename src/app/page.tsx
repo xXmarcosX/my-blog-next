@@ -7,7 +7,7 @@ import { postRepository } from "@/repositories/post";
 import { Suspense } from "react";
 
 export default async function HomePage() {
-  const posts = postRepository.findAll()
+  const posts = postRepository.findAllPublic()
 
   return (
     <>
