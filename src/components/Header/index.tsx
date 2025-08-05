@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <header>
       <h1 className={classes}>
-        <Link href="#">My Blog</Link>
+        <Link href="/">My Blog</Link>
       </h1>
     </header>
   )

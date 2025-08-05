@@ -11,21 +11,13 @@ export default async function HomePage() {
 
   return (
     <>
-      <Container>
-        <Header />
-        
-        <Suspense fallback={<SpinLoader containerClasses="min-h-screen" />}>
-          <FeaturedPost />
-        </Suspense>
+      <Suspense fallback={<SpinLoader containerClasses="min-h-screen" />}>
+        <FeaturedPost />
+      </Suspense>
 
-        <Suspense fallback={<SpinLoader containerClasses="min-h-screen" />}>
-          <PostList />
-        </Suspense>
-
-        <footer>
-          <h1 className="flex justify-center items-center text-4xl">footer</h1>
-        </footer>
-      </Container>
+      <Suspense fallback={<SpinLoader containerClasses="min-h-screen" />}>
+        <PostList />
+      </Suspense>
     </>
   )
 }
