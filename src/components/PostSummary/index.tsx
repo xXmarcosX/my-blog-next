@@ -12,7 +12,7 @@ type PostSummaryProps = {
 
 export default function PostSummary({postHeading, postLink, createdAt, title, excerpt}: PostSummaryProps) {
   return (
-    <div className="flex flex-col gap-2 mt-4">
+    <div className="flex flex-col gap-2 mt-4 m-4">
       <time
         dateTime={createdAt}
         className="text-slate-600 dark:text-gray-400 text-sm/tight font-normal"
