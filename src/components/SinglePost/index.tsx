@@ -3,6 +3,7 @@ import Image from "next/image"
 import PostHeading from "../PostHeading"
 import { formatRelativeDate } from "@/utils/format-datetime"
 import PostDate from "../PostDate"
+import SafeMarkdown from "../SafeMarkdown"
 
 type SinglePostProps = {
   slug: string
@@ -39,9 +40,7 @@ export default async function SinglePost({ slug }: SinglePostProps) {
           <strong><p>{post.excerpt}</p></strong> 
         </div>
 
-        <div className="leading-8 text-lg">
-          {post.content}
-        </div>
+        <SafeMarkdown markdown={post.content}/>
       </article>
     </>
   )
