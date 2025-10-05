@@ -1,3 +1,4 @@
+import ErrorMessage from "@/components/ErrorMessage";
 import clsx from "clsx";
 
 export default function NotFoundPage() {
@@ -12,14 +13,12 @@ export default function NotFoundPage() {
 
   return (
     <>
-      <title>Página não encontrada</title>
-      
-      <div className={classes}>
-        <div className="flex flex-col gap-16">
-          <h1 className="text-8xl font-bold">404</h1>
-          <p>Erro 404 - A página que você está tentando acessar não existe neste site.</p>
-        </div>
-      </div>
+      <ErrorMessage
+        pageTitle="Página não encontrada"
+        contentTitle="404"
+        content="Erro 404 - Página não encontrada"
+      />
+
     </>
   )
 }
