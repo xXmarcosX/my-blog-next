@@ -14,6 +14,15 @@ const JSON_POSTS_FILE_PATH = resolve(
 const SIMULATE_IN_MS = 0
 
 export class JsonPostRepository implements PostRepository {
+  async findAll(): Promise<PostModel[]> {
+    await this.simulate()
+
+    const posts = await this.readFromDisk()
+
+    return posts;
+  }
+
+
   async findBySlug(slug: string): Promise<PostModel> {
     await this.simulate()
     
