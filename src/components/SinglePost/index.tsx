@@ -4,9 +4,47 @@ import PostHeading from "../PostHeading"
 import { formatRelativeDate } from "@/utils/format-datetime"
 import PostDate from "../PostDate"
 import SafeMarkdown from "../SafeMarkdown"
+import { Suspense } from "react"
+import SpinLoader from "../SpinLoader"
+import { PostModel } from "@/models/post/post-model"
 
 type SinglePostProps = {
   slug: string
+}
+
+async function CachedContent({ post }: {post: PostModel} ) {
+  'use cache'
+
+  return (
+    <article>
+      <header className="flex flex-col mb-8">
+        <div className="flex flex-col gap-2">
+          <Image
+            src={post.coverImageUrl}
+            width={1400}
+            height={800}
+            alt={post.title}
+            title={post.title}
+            className="max-h-[500] block rounded-xl"
+          />
+
+          <div>
+            <PostHeading url={`/post/${post.slug}`}>
+              {post.title}
+            </PostHeading>
+
+            <p>{post.author} | <PostDate dateTime={post.createdAt} /> </p>
+          </div>
+        </div>
+      </header>
+
+      <div className="mb-8 text-xl">
+        <strong><p>{post.excerpt}</p></strong>
+      </div>
+
+      <SafeMarkdown markdown={post.content} />
+    </article>
+  )
 }
 
 export default async function SinglePost({ slug }: SinglePostProps) {
@@ -14,34 +52,9 @@ export default async function SinglePost({ slug }: SinglePostProps) {
 
   return (
     <>
-      <article>
-        <header className="flex flex-col mb-8">
-          <div className="flex flex-col gap-2">
-              <Image
-                src={post.coverImageUrl}
-                width={1400}
-                height={800}
-                alt={post.title}
-                title={post.title}
-                className="max-h-[500] block rounded-xl"
-              />
-
-            <div>
-              <PostHeading url={`/post/${post.slug}`}>
-                {post.title}
-              </PostHeading>
-
-              <p>{post.author} | <PostDate dateTime={post.createdAt} /> </p>
-            </div>
-          </div>
-        </header>
-
-        <div className="mb-8 text-xl">
-          <strong><p>{post.excerpt}</p></strong> 
-        </div>
-
-        <SafeMarkdown markdown={post.content}/>
-      </article>
+      <Suspense fallback={<SpinLoader />}>
+        <CachedContent post={post} />
+      </Suspense>
     </>
   )
 }

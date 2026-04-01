@@ -1,15 +1,25 @@
+import { PostModel } from "@/models/post/post-model"
 import { postRepository } from "@/repositories/post"
+import { cacheLife } from "next/cache"
 import { notFound } from "next/navigation"
 import { cache } from "react"
 
-export const findAllPublicPosts = cache(
-  async () => await postRepository.findAllPublic()
-)
+export async function findAllPublicPosts() {
+  'use cache'
 
-export const findPostBySlugCached = cache(
-  async (slug: string) => await postRepository.findBySlug(slug).catch(() => notFound())
-)
+  return await postRepository.findAllPublic()
+}
 
-export const findPostByIdCached = cache(
-  async (id: string) => await postRepository.findById(id)
-)
+
+export async function findPostBySlugCached(slug: string): Promise<PostModel> {
+  'use cache'
+
+  return await postRepository.findBySlugPublic(slug).catch(() => notFound())
+}
+
+
+export async function findPostByIdCached(id: string): Promise<PostModel> {
+  'use cache'
+
+  return await postRepository.findById(id).catch(() => notFound())
+}

@@ -1,14 +1,28 @@
-import { JsonPostRepository } from "@/repositories/post/json-post-repository"
-import { drizzleDb } from "."
-import { postsTable } from "./schemas"
+// import { JsonPostRepository } from "@/repositories/post/json-post-repository"
+// import { drizzleDb } from "."
+// import { postsTable } from "./schemas"
 
-(async () => {
-  const jsonPostRepository = new JsonPostRepository()
-  const posts = await jsonPostRepository.findAllPublic()
+// (async () => {
+//   const jsonPostRepository = new JsonPostRepository()
+//   const posts = await jsonPostRepository.findAllPublic()
 
-  try {
-    await drizzleDb.insert(postsTable).values(posts)
-  } catch (e) {
-    console.log(`Error: ${e}`)
-  }
-})()
+//   try {
+//     await drizzleDb.insert(postsTable).values(posts)
+//   } catch (e) {
+//     console.log(`Error: ${e}`)
+//   }
+// })()
+// import { JsonPostRepository } from "@/repositories/post/json-post-repository"
+// import { drizzleDb } from "."
+// import { postsTable } from "./schemas"
+
+// (async () => {
+//   const jsonPostRepository = new JsonPostRepository()
+//   const posts = await jsonPostRepository.findAllPublic()
+
+//   try {
+//     await drizzleDb.insert(postsTable).values(posts)
+//   } catch (e) {
+//     console.log(`Error: ${e}`)
+//   }
+// })()

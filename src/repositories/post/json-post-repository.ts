@@ -23,7 +23,7 @@ export class JsonPostRepository implements PostRepository {
   }
 
 
-  async findBySlug(slug: string): Promise<PostModel> {
+  async findBySlugPublic(slug: string): Promise<PostModel> {
     await this.simulate()
     
     const posts = await this.readFromDisk() 

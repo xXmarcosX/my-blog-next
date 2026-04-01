@@ -9,7 +9,7 @@ export default function SpinLoader({ containerClasses = '' }: SpinLoaderProps) {
     'flex',
     'items-center',
     'justify-center',
-    containerClasses
+    // containerClasses
   )
 
   const spinerClasses = clsx('w-10 h-10',

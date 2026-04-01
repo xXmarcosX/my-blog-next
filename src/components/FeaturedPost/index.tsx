@@ -1,6 +1,5 @@
 import { findAllPublicPosts } from "@/lib/post/queries";
 import PostCoverImage from "../PostCoverImage";
-import PostHeading from "../PostHeading";
 import PostSummary from "../PostSummary";
 
 export default async function FeaturedPost() {

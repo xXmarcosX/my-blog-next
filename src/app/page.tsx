@@ -1,11 +1,13 @@
 import FeaturedPost from "@/components/FeaturedPost";
 import PostList from "@/components/PostList";
 import SpinLoader from "@/components/SpinLoader";
-import { postRepository } from "@/repositories/post";
+import { cacheLife } from "next/cache";
 import { Suspense } from "react";
 
 export default async function HomePage() {
-  const posts = postRepository.findAllPublic()
+ 'use cache'
+
+ cacheLife('hours')
 
   return (
     <>

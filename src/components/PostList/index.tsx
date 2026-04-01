@@ -1,11 +1,14 @@
-import { postRepository } from "@/repositories/post"
+import { PostModel } from "@/models/post/post-model"
 import PostCoverImage from "../PostCoverImage"
 import PostSummary from "../PostSummary"
 import { findAllPublicPosts } from "@/lib/post/queries"
 import clsx from "clsx"
+import { Suspense } from "react"
+import SpinLoader from "../SpinLoader"
+import { cacheLife } from "next/cache"
 
-export default async function PostList() {
-  const posts = await findAllPublicPosts()
+async function CachedContent({ posts }: { posts: PostModel[] }) {
+  'use cache'
 
   const imageContainerClasses = clsx(
     'group',
@@ -49,5 +52,15 @@ export default async function PostList() {
         </div>
       })}
     </div>
+  )
+}
+
+export default async function PostList() {
+  const posts = await findAllPublicPosts()
+
+  return (
+    < Suspense fallback={< SpinLoader />}>
+      <CachedContent posts={posts} />
+    </Suspense >
   )
 }

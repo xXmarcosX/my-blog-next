@@ -8,7 +8,7 @@ type RootErrorProps = {
   reset: () => void
 }
 
-export default function RootError({ error, reset }: RootErrorProps) {
+export default function RootError({ error }: RootErrorProps) {
   useEffect(() => {
     console.log(error)
   }, [error])
