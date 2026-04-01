@@ -4,7 +4,6 @@ db.sqlite3
 notas.txt
 
 /src/app/ExamplePage
-/src/app/actions
 
 # dependencies
 /node_modules
