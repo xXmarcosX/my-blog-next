@@ -1,8 +1,8 @@
 import SinglePost from "@/components/SinglePost";
 import SpinLoader from "@/components/SpinLoader";
-import { findPostBySlugCached } from "@/lib/post/queries"
+import { findPostBySlugCached } from "@/lib/post/queries/public"
 import { Metadata } from "next";
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import { Suspense } from "react";
 
 type PostSlugPageProps = {
@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: PostSlugPageProps): Promise<M
 async function CachedContent({slug}: {slug: string}) {
   'use cache'
 
+  cacheTag('posts')
   cacheLife('max')
 
   return <SinglePost slug={slug}/>

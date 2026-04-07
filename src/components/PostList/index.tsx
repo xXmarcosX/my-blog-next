@@ -1,14 +1,18 @@
 import { PostModel } from "@/models/post/post-model"
 import PostCoverImage from "../PostCoverImage"
 import PostSummary from "../PostSummary"
-import { findAllPublicPosts } from "@/lib/post/queries"
+import { findAllPublicPostsCached } from "@/lib/post/queries/public"
 import clsx from "clsx"
 import { Suspense } from "react"
 import SpinLoader from "../SpinLoader"
-import { cacheLife } from "next/cache"
+import { cacheTag } from "next/cache"
+import ErrorMessage from "../ErrorMessage"
 
 async function CachedContent({ posts }: { posts: PostModel[] }) {
   'use cache'
+  cacheTag('posts')
+
+  if (posts.length === 0) return <ErrorMessage content="Nenhum post encontrado" contentTitle="Ops" pageTitle="Ops"/>
 
   const imageContainerClasses = clsx(
     'group',
@@ -56,7 +60,7 @@ async function CachedContent({ posts }: { posts: PostModel[] }) {
 }
 
 export default async function PostList() {
-  const posts = await findAllPublicPosts()
+  const posts = await findAllPublicPostsCached()
 
   return (
     < Suspense fallback={< SpinLoader />}>

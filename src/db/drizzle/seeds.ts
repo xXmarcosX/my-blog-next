@@ -1,28 +1,23 @@
-// import { JsonPostRepository } from "@/repositories/post/json-post-repository"
-// import { drizzleDb } from "."
-// import { postsTable } from "./schemas"
+import { JsonPostRepository } from '@/repositories/post/json-post-repository';
+import { drizzleDb } from '.';
+import { postsTable } from './schemas';
 
-// (async () => {
-//   const jsonPostRepository = new JsonPostRepository()
-//   const posts = await jsonPostRepository.findAllPublic()
+(async () => {
+  const jsonPostRepository = new JsonPostRepository();
+  const posts = await jsonPostRepository.findAll();
 
-//   try {
-//     await drizzleDb.insert(postsTable).values(posts)
-//   } catch (e) {
-//     console.log(`Error: ${e}`)
-//   }
-// })()
-// import { JsonPostRepository } from "@/repositories/post/json-post-repository"
-// import { drizzleDb } from "."
-// import { postsTable } from "./schemas"
+  try {
+    await drizzleDb.delete(postsTable); // ISSO LIMPA A BASE DE DADOS
+    await drizzleDb.insert(postsTable).values(posts);
 
-// (async () => {
-//   const jsonPostRepository = new JsonPostRepository()
-//   const posts = await jsonPostRepository.findAllPublic()
-
-//   try {
-//     await drizzleDb.insert(postsTable).values(posts)
-//   } catch (e) {
-//     console.log(`Error: ${e}`)
-//   }
-// })()
+    console.log();
+    console.log(`${posts.length} posts foram salvos na base de dados.`);
+    console.log();
+  } catch (e) {
+    console.log();
+    console.log('Ocorreu um erro...');
+    console.log();
+    console.log(e);
+    console.log();
+  }
+})();

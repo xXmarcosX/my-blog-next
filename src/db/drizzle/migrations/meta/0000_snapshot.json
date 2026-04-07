@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "add22afb-fd50-48f6-a664-313d987bf534",
+  "id": "c1db36ca-7c7c-427d-911f-cf50f637e5a6",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "posts": {
@@ -35,8 +35,8 @@
           "notNull": true,
           "autoincrement": false
         },
-        "excert": {
-          "name": "excert",
+        "excerpt": {
+          "name": "excerpt",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
@@ -70,8 +70,8 @@
           "notNull": true,
           "autoincrement": false
         },
-        "update_at": {
-          "name": "update_at",
+        "updated_at": {
+          "name": "updated_at",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
