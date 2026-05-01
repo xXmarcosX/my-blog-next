@@ -16,7 +16,7 @@ export default async function Posttitle({post}: PostTitleProps) {
 
   return (
     <>
-      <Link href={`/admin/post/${post.id}`} className="flex items-center gap-3 text-left">
+      <Link href={`/admin/post/${post.id}`} className="group flex items-center gap-3 text-left">
         <span className="shrink-0 flex items-center justify-center">
           {post.published ? (
             <FaCheckCircle size={iconsSize} color={colorIcon(post.published)} />
@@ -24,7 +24,9 @@ export default async function Posttitle({post}: PostTitleProps) {
             <IoIosRemoveCircle size={29} color={colorIcon(post.published)} />
           )}
         </span>
-        <span className="leading-tight">{post.title}</span>
+        <span className="leading-tight relative inline-block pb-0.5 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 group-hover:after:origin-bottom-left group-hover:after:scale-x-100 after:transition-transform after:duration-300 after:ease-in-out after:bg-cyan-500">
+          {post.title}
+        </span>
       </Link>
     </>
   )
