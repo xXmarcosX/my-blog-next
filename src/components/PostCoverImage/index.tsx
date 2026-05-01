@@ -22,7 +22,7 @@ export default function PostCoverImage({ imageProps, linkProps }: PostCoverImage
           className={clsx(
             'w-full',
             'group-hover:scale-105',
-            'transition duration-200',
+            'transition duration-200 h-80',
             imageProps.className
           )}
           priority

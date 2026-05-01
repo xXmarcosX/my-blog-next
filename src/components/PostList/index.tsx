@@ -8,11 +8,13 @@ import SpinLoader from "../SpinLoader"
 import { cacheTag } from "next/cache"
 import ErrorMessage from "../ErrorMessage"
 
-async function CachedContent({ posts }: { posts: PostModel[] }) {
+async function CachedContent() {
   'use cache'
   cacheTag('posts')
 
-  if (posts.length === 0) return <ErrorMessage content="Nenhum post encontrado" contentTitle="Ops" pageTitle="Ops"/>
+  const posts = await findAllPublicPostsCached()
+
+  if (posts.length === 0) return <ErrorMessage content="Nenhum post encontrado" contentTitle="Ops" pageTitle="Ops" />
 
   const imageContainerClasses = clsx(
     'group',
@@ -28,7 +30,7 @@ async function CachedContent({ posts }: { posts: PostModel[] }) {
         const postLink = `/post/${post.slug}`
 
         return <div key={post.id} className={imageContainerClasses}>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden h-80">
             <PostCoverImage
               linkProps={{
                 href: postLink,
@@ -60,11 +62,9 @@ async function CachedContent({ posts }: { posts: PostModel[] }) {
 }
 
 export default async function PostList() {
-  const posts = await findAllPublicPostsCached()
-
   return (
     < Suspense fallback={< SpinLoader />}>
-      <CachedContent posts={posts} />
+      <CachedContent />
     </Suspense >
   )
 }
