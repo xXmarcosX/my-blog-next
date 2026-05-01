@@ -5,6 +5,8 @@ notas.txt
 
 /src/app/ExamplePage
 
+uploads/
+
 # dependencies
 /node_modules
 /.pnp
