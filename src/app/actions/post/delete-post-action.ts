@@ -1,10 +1,7 @@
 'use server'
 
-import { drizzleDb } from "@/db/drizzle"
-import { postsTable } from "@/db/drizzle/schemas"
 import { postRepository } from "@/repositories/post"
-import { eq } from "drizzle-orm"
-import { updateTag } from "next/cache"
+import { revalidateTag, updateTag } from "next/cache"
 
 export async function deletePostAction(id: string) {
   if (!id || typeof id !== 'string') {
@@ -21,7 +18,19 @@ export async function deletePostAction(id: string) {
     }
   }
 
-  await drizzleDb.delete(postsTable).where(eq(postsTable.id, id)).catch((e) => alert(`Error: ${e}`))
+  try {
+    await postRepository.delete(id)
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      return {
+        error: e.message
+      }
+    }
+
+    return {
+      error: 'Erro Desconhecido'
+    }
+  }
 
   updateTag('posts')
 

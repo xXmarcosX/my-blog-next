@@ -8,7 +8,7 @@ import {
 import { PostUpdateSchema } from '@/lib/post/validations/validatesPost';
 import { postRepository } from '@/repositories/post';
 import { getZodErrorMessages } from '@/utils/get-zod-error-messages';
-import { revalidateTag } from 'next/cache';
+import { revalidateTag, updateTag } from 'next/cache';
 
 type UpdatePostActionState = {
   formState: PublicPost;
@@ -70,7 +70,7 @@ export async function updatePostAction(
     };
   }
 
-  revalidateTag('posts', '');
+  updateTag('posts')
 
   return {
     formState: makePublicPostFromDb(post),

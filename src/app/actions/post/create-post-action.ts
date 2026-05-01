@@ -6,7 +6,7 @@ import { PostModel } from "@/models/post/post-model"
 import { postRepository } from "@/repositories/post"
 import { getZodErrorMessages } from "@/utils/get-zod-error-messages"
 import { makeSlugFromText } from "@/utils/make-slug-from-text"
-import { revalidateTag } from "next/cache"
+import { revalidateTag, updateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import { v4 as uuidv4 } from 'uuid'
 
@@ -67,6 +67,6 @@ export async function createPostAction(
     }
   }
 
-  revalidateTag('posts', '');
+  updateTag('posts')
   redirect(`/admin/post/${newPost.id}?created=1`)
 }
